@@ -1,0 +1,459 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
+    <title>Bloom</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style2.css" />
+  </head>
+  <body>
+    <div class="app">
+      <nav class="side" aria-label="Main">
+        <div class="logo"><i></i><span>Bloom</span></div>
+        <div class="nav" id="nav"></div>
+        <div class="privacy-chip">
+          <b data-en="Private workspace">مساحة عمل خاصة</b><br /><span
+            data-en="Only you and authorised team members can see client notes."
+            >لا يرى ملاحظات العملاء إلا أنت وأعضاء الفريق المصرّح لهم.</span
+          >
+        </div>
+      </nav>
+
+      <main>
+        <div class="top">
+          <div>
+            <h1 id="ttl"></h1>
+            <p id="sub"></p>
+          </div>
+          <div class="row">
+            <button class="btn" id="langBtn" aria-label="Switch language">
+              English
+            </button>
+            <button class="btn pri" data-go="note" data-en="+ New session note">
+              + ملاحظة جلسة جديدة
+            </button>
+          </div>
+        </div>
+
+        <!-- DASHBOARD -->
+        <section class="view" id="v-dashboard">
+          <div class="grid g3">
+            <div class="card stat">
+              <b>18</b><span data-en="Active cases">حالة نشطة</span>
+            </div>
+            <div class="card stat b">
+              <b>7</b
+              ><span data-en="Upcoming sessions this week"
+                >جلسات قادمة هذا الأسبوع</span
+              >
+            </div>
+            <div class="card stat">
+              <b>3</b><span data-en="Follow-ups due">متابعات مستحقة</span>
+            </div>
+          </div>
+          <div class="grid g2" style="margin-top: 18px">
+            <div class="card">
+              <h2 data-en="Recent cases">الحالات الأخيرة</h2>
+              <div class="list" id="cases"></div>
+            </div>
+            <div class="card">
+              <h2 data-en="Follow-ups">المتابعات</h2>
+              <div class="chk">
+                <input type="checkbox" id="f1" /><label
+                  for="f1"
+                  data-en="Send breathing exercise to Layla K."
+                  >إرسال تمرين التنفّس إلى ليلى ك.</label
+                >
+              </div>
+              <div class="chk">
+                <input type="checkbox" id="f2" /><label
+                  for="f2"
+                  data-en="Review sleep diary with Omar S."
+                  >مراجعة سجل النوم مع عمر س.</label
+                >
+              </div>
+              <div class="chk">
+                <input type="checkbox" id="f3" /><label
+                  for="f3"
+                  data-en="Renew consent form for Mona H."
+                  >تجديد نموذج الموافقة لمنى ح.</label
+                >
+              </div>
+            </div>
+          </div>
+          <div class="card" style="margin-top: 18px">
+            <h2 data-en="This week">جدول الأسبوع</h2>
+            <div class="week">
+              <div class="day">
+                <b data-en="Sunday">الأحد</b>
+                <div class="slot">
+                  10:00 <span data-en="Layla K.">ليلى ك.</span>
+                </div>
+              </div>
+              <div class="day">
+                <b data-en="Monday">الاثنين</b>
+                <div class="slot b">
+                  11:30 <span data-en="Omar S.">عمر س.</span>
+                </div>
+                <div class="slot">
+                  2:00 <span data-en="Mona H.">منى ح.</span>
+                </div>
+              </div>
+              <div class="day">
+                <b data-en="Tuesday">الثلاثاء</b>
+                <div class="slot">
+                  9:00 <span data-en="Youssef R.">يوسف ر.</span>
+                </div>
+              </div>
+              <div class="day">
+                <b data-en="Wednesday">الأربعاء</b>
+                <div class="slot b">
+                  12:00 <span data-en="Layla K.">ليلى ك.</span>
+                </div>
+                <div class="slot">
+                  4:00 <span data-en="Omar S.">عمر س.</span>
+                </div>
+              </div>
+              <div class="day">
+                <b data-en="Thursday">الخميس</b>
+                <div class="slot">
+                  10:30 <span data-en="Mona H.">منى ح.</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- CASE -->
+        <section class="view" id="v-case">
+          <div class="grid g2">
+            <div class="grid" style="align-content: start">
+              <div class="card">
+                <div class="row" style="justify-content: space-between">
+                  <div class="row">
+                    <div class="av">ل</div>
+                    <div>
+                      <h2 data-en="Layla K., 29">ليلى ك.، ٢٩ سنة</h2>
+                      <span
+                        class="mute"
+                        data-en="Case #A-2041 · Weekly sessions"
+                        >حالة رقم A-2041 · جلسات أسبوعية</span
+                      >
+                    </div>
+                  </div>
+                  <span class="tag b" data-en="Consent valid until Mar 2027"
+                    >الموافقة سارية حتى مارس ٢٠٢٧</span
+                  >
+                </div>
+                <div class="consent" style="margin-top: 14px">
+                  <svg class="ic" viewBox="0 0 24 24">
+                    <rect x="5" y="11" width="14" height="9" rx="2" />
+                    <path d="M8 11V8a4 4 0 0 1 8 0v3" /></svg
+                  ><span
+                    data-en="Visible to: you and Dr. Huda Nabil (supervisor). Last viewed today."
+                    >مرئي لـ: أنتِ ود. هدى نبيل (المشرفة). آخر اطلاع
+                    اليوم.</span
+                  >
+                </div>
+              </div>
+              <div class="card">
+                <h2 data-en="Session timeline">الخط الزمني للجلسات</h2>
+                <div class="tl">
+                  <div>
+                    <b data-en="Session 8 · Nov 9">الجلسة ٨ · ٩ نوفمبر</b>
+                    <p
+                      class="mute"
+                      data-en="Practised grounding technique. Reported fewer interrupted nights."
+                    >
+                      تدرّبنا على تقنية التثبيت. ذكرت ليالي أقل تقطّعًا.
+                    </p>
+                  </div>
+                  <div>
+                    <b data-en="Session 7 · Nov 2">الجلسة ٧ · ٢ نوفمبر</b>
+                    <p
+                      class="mute"
+                      data-en="Explored work-related stress triggers."
+                    >
+                      استكشاف محفزات ضغط العمل.
+                    </p>
+                  </div>
+                  <div>
+                    <b data-en="Session 6 · Oct 26">الجلسة ٦ · ٢٦ أكتوبر</b>
+                    <p
+                      class="mute"
+                      data-en="Reviewed goals and agreed on a sleep diary."
+                    >
+                      مراجعة الأهداف والاتفاق على سجل النوم.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="grid" style="align-content: start">
+              <div class="card">
+                <h2 data-en="Treatment goals">أهداف العلاج</h2>
+                <span data-en="Manage daily stress">إدارة الضغط اليومي</span>
+                <div class="bar"><i style="width: 65%"></i></div>
+                <span data-en="Improve sleep routine">تحسين روتين النوم</span>
+                <div class="bar b"><i style="width: 45%"></i></div>
+                <span data-en="Build assertive communication"
+                  >بناء التواصل الحازم</span
+                >
+                <div class="bar"><i style="width: 30%"></i></div>
+              </div>
+              <div class="card">
+                <h2 data-en="Assigned tasks">المهام المسندة</h2>
+                <div class="chk">
+                  <input type="checkbox" checked id="t1" /><label
+                    for="t1"
+                    data-en="Daily sleep diary"
+                    >سجل النوم اليومي</label
+                  >
+                </div>
+                <div class="chk">
+                  <input type="checkbox" id="t2" /><label
+                    for="t2"
+                    data-en="Grounding practice, 3 times a week"
+                    >تمرين التثبيت ٣ مرات أسبوعيًا</label
+                  >
+                </div>
+              </div>
+              <div class="card">
+                <h2 data-en="Therapist observations">ملاحظات المعالج</h2>
+                <p>
+                  <b data-en="Behaviour:">السلوك:</b>
+                  <span
+                    data-en="Calmer, more open posture than earlier sessions."
+                    >أكثر هدوءًا وانفتاحًا من الجلسات السابقة.</span
+                  >
+                </p>
+                <p style="margin-top: 6px">
+                  <b data-en="Engagement:">التفاعل:</b>
+                  <span class="tag" data-en="High">عالٍ</span>
+                </p>
+              </div>
+              <div class="card" style="background: var(--sand)">
+                <h2 data-en="Next-session plan">خطة الجلسة القادمة</h2>
+                <p
+                  data-en="Review sleep diary, introduce a short communication exercise."
+                >
+                  مراجعة سجل النوم وتقديم تمرين تواصل قصير.
+                </p>
+                <button
+                  class="btn pri sm"
+                  style="margin-top: 10px"
+                  data-go="note"
+                  data-en="Write a note"
+                >
+                  كتابة ملاحظة
+                </button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- NOTE -->
+        <section class="view" id="v-note">
+          <div class="grid g2">
+            <div class="card">
+              <div class="two">
+                <div>
+                  <label class="f" for="cl" data-en="Client">العميل</label
+                  ><select id="cl">
+                    <option data-en="Layla K.">ليلى ك.</option>
+                    <option data-en="Omar S.">عمر س.</option>
+                    <option data-en="Mona H.">منى ح.</option>
+                  </select>
+                </div>
+                <div>
+                  <label class="f" for="dt" data-en="Date and time"
+                    >التاريخ والوقت</label
+                  ><input type="date" id="dt" value="2026-11-12" />
+                </div>
+              </div>
+              <div id="fields"></div>
+              <label class="f" for="fu" data-en="Follow-up date"
+                >موعد المتابعة</label
+              ><input type="date" id="fu" value="2026-11-19" />
+              <div class="row" style="margin-top: 20px">
+                <button class="btn" id="draft" data-en="Save draft">
+                  حفظ كمسودة
+                </button>
+                <button
+                  class="btn pri"
+                  id="approve"
+                  data-en="Review and approve"
+                >
+                  مراجعة واعتماد
+                </button>
+                <span class="tag s" id="status" data-en="Draft">مسودة</span>
+              </div>
+            </div>
+            <aside class="ai" aria-label="AI">
+              <h2 data-en="Assisted summary">ملخص مساعد</h2>
+              <p
+                class="src"
+                data-en="A draft to help you. It does not diagnose or decide. Nothing changes in your note until you accept it."
+              >
+                مسودة تساعدك فقط. لا تشخّص ولا تتخذ قرارات. لن يتغير شيء في
+                ملاحظتك دون موافقتك.
+              </p>
+              <div class="sum">
+                <span
+                  data-en="The client described better sleep on four of seven nights."
+                  >وصفت العميلة نومًا أفضل في أربع ليالٍ من سبع.</span
+                ><br /><span class="tag b" data-en="Source: Key topics, line 2"
+                  >المصدر: المواضيع الرئيسية، السطر ٢</span
+                >
+              </div>
+              <div class="sum">
+                <span
+                  data-en="She practised grounding twice and found it helpful at work."
+                  >مارست التثبيت مرتين ووجدته مفيدًا في العمل.</span
+                ><br /><span class="tag b" data-en="Source: Homework"
+                  >المصدر: الواجبات</span
+                >
+              </div>
+              <div class="row">
+                <button class="btn sm" id="acc" data-en="Add to progress">
+                  إضافة إلى التقدم</button
+                ><button class="btn sm" id="dis" data-en="Dismiss">
+                  تجاهل
+                </button>
+              </div>
+            </aside>
+          </div>
+        </section>
+
+        <!-- SETTINGS -->
+        <section class="view" id="v-settings">
+          <div class="grid g2e">
+            <div class="card">
+              <h2 data-en="Note sections">أقسام الملاحظة</h2>
+              <p
+                class="mute"
+                style="margin-bottom: 12px"
+                data-en="Reorder, hide or add sections. Changes appear in the note editor."
+              >
+                أعيدي الترتيب أو أخفي أو أضيفي أقسامًا. تظهر التغييرات في محرر
+                الملاحظات.
+              </p>
+              <div id="secs"></div>
+              <div class="row" style="margin-top: 12px">
+                <input
+                  type="text"
+                  id="newsec"
+                  placeholder="…"
+                  aria-label="New section"
+                  style="flex: 1"
+                /><button class="btn pri" id="addsec" data-en="Add section">
+                  إضافة قسم
+                </button>
+              </div>
+            </div>
+            <div class="grid" style="align-content: start">
+              <div class="card">
+                <h2 data-en="Roles and access">الأدوار والصلاحيات</h2>
+                <div class="scroll">
+                  <table>
+                    <tr>
+                      <th data-en="Member">العضو</th>
+                      <th data-en="Role">الدور</th>
+                      <th data-en="Access">الوصول</th>
+                    </tr>
+                    <tr>
+                      <td data-en="Dr. Sara Mansour">د. سارة منصور</td>
+                      <td data-en="Therapist">معالجة</td>
+                      <td>
+                        <select aria-label="Access">
+                          <option data-en="Own cases">حالاتها فقط</option>
+                          <option data-en="All cases">كل الحالات</option>
+                        </select>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td data-en="Dr. Huda Nabil">د. هدى نبيل</td>
+                      <td data-en="Supervisor">مشرفة</td>
+                      <td>
+                        <select aria-label="Access">
+                          <option data-en="Read only">قراءة فقط</option>
+                          <option data-en="Own cases">حالاتها فقط</option>
+                        </select>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td data-en="Nour Adel">نور عادل</td>
+                      <td data-en="Reception">الاستقبال</td>
+                      <td>
+                        <select aria-label="Access">
+                          <option data-en="Schedule only">الجدول فقط</option>
+                          <option data-en="Read only">قراءة فقط</option>
+                        </select>
+                      </td>
+                    </tr>
+                  </table>
+                </div>
+              </div>
+              <div class="card">
+                <h2 data-en="Privacy and consent">الخصوصية والموافقة</h2>
+                <div class="srow">
+                  <span
+                    class="grow"
+                    data-en="Require consent before AI assistance"
+                    >طلب الموافقة قبل المساعدة الذكية</span
+                  ><label class="sw"
+                    ><input
+                      type="checkbox"
+                      checked
+                      aria-label="AI consent" /><span></span
+                  ></label>
+                </div>
+                <div class="srow">
+                  <span
+                    class="grow"
+                    data-en="Remind me 30 days before consent expires"
+                    >تذكيري قبل انتهاء الموافقة بـ ٣٠ يومًا</span
+                  ><label class="sw"
+                    ><input
+                      type="checkbox"
+                      checked
+                      aria-label="Reminder" /><span></span
+                  ></label>
+                </div>
+                <div class="srow">
+                  <span class="grow" data-en="Show access log on every case"
+                    >إظهار سجل الاطلاع في كل حالة</span
+                  ><label class="sw"
+                    ><input
+                      type="checkbox"
+                      checked
+                      aria-label="Log" /><span></span
+                  ></label>
+                </div>
+                <div class="srow">
+                  <span class="grow" data-en="Auto sign-out after 15 minutes"
+                    >تسجيل خروج تلقائي بعد ١٥ دقيقة</span
+                  ><label class="sw"
+                    ><input type="checkbox" aria-label="Sign out" /><span></span
+                  ></label>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+    <nav class="bottom" id="bnav" aria-label="Main"></nav>
+    <div class="toast" id="toast" role="status"></div>
+
+    <script src="script.js"></script>
+  </body>
+  
+</html>
